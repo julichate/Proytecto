@@ -1,0 +1,257 @@
+
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	
+
+}
+@media screen and (max-width: 400px) {
+body{
+
+    height: 100vh;
+    background-image: url(./foto2.jpg);
+   
+    background-repeat: no-repeat;
+    background-size: cover;
+        
+}
+.menuButton{
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(74, 137, 219);
+
+    
+
+}
+
+.menuButton button{
+    
+    width: 150px;
+   height: 20%;
+   
+    font-size: 20px;
+    background-color: rgb(212, 237, 240);
+    border-radius: 25px;
+    color: rgb(3, 0, 0);
+    text-align: center;
+    box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.75);
+    text-align: center;
+
+}
+
+.menuButton button:hover{
+    opacity: 0.7;
+    cursor: pointer;
+    
+}
+
+
+.formAgregar{
+    width: 50%;
+    height: 500px;
+    margin-top: 100px;
+    margin-left: 25%;
+    outline: 2px solid black;
+    box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.75);
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(160, 160, 160);
+  
+}
+
+.formAgregar h2{
+color: white;
+}
+
+.formAgregar input{
+    width: 80%;
+}
+
+.formAgregar button{
+    margin-top: 20px;
+}
+
+.divFlota{
+width: 30%;
+background-color: beige;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-top: 200px;
+margin-left: 10%;
+}
+
+.ListaAgregar{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+ 
+    justify-content: center;
+   
+
+
+}
+.divFlota{
+    position: relative;
+    transform: translateY(0%);
+    width: 50%;
+    height: 20%;
+    background-color: rgb(160, 160, 160);
+    outline: 2px black;
+    box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.75);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-left: 25%;
+    margin-right:25%;
+    -webkit-transform: translateY(0%);
+    -moz-transform: translateY(0%);
+    -ms-transform: translateY(0%);
+    -o-transform: translateY(0%);
+    padding: 12px;
+}
+
+.ulEot{
+   
+    list-style: none;
+    margin-left: 10px;
+   
+}
+}
+
+@media screen and (min-width: 400px) {
+    body{
+
+        height: 100vh;
+        background-image: url(./foto2.jpg);
+       /* background: rgb(166,158,147);
+        background: linear-gradient(0deg, rgba(166,158,147,1) 0%, rgba(212,240,251,1) 78%, rgba(178,216,246,1) 100%);*/
+        background-repeat: no-repeat;
+        background-size: cover;
+  
+}
+.menuButton{
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    background-color:  rgb(74, 137, 219);
+
+    
+
+}
+
+.menuButton button{
+    
+    width: 150px;
+   height: 20%;
+   
+    font-size: 15px;
+    background-color: rgb(212, 237, 240);
+    border-radius: 25px;
+    color: black;
+    text-align: center;
+    box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 3px 5px 0px rgba(0,0,0,0.75);
+    text-align: center;
+
+}
+
+.menuButton button:hover{
+    opacity: 0.7;
+    cursor: pointer;
+    
+}
+
+
+.formAgregar{
+    width: 50%;
+    height: 70%;
+    margin-top: 50px;
+    margin-left: 25%;
+    outline: 2px solid black;
+    box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.75);
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(160, 160, 160);
+    padding: 10px;
+  
+}
+
+.formAgregar h2{
+color: white;
+}
+
+.formAgregar input{
+    width: 20%;
+    margin: 15px;
+}
+
+.formAgregar button{
+    margin-top: 20px;
+}
+
+.ListaAgregar{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+ 
+    justify-content: center;
+   
+
+
+}
+.divFlota{
+    position: relative;
+    transform: translateY(100%);
+    width: 30%;
+    height: 20%;
+    background-color: rgb(160, 160, 160);
+    outline: 2px black;
+    box-shadow: 7px 10px 5px 0px rgba(0,0,0,0.75);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-left: 35%;
+    margin-right: 35%;
+    -webkit-transform: translateY(100%);
+    -moz-transform: translateY(100%);
+    -ms-transform: translateY(100%);
+    -o-transform: translateY(100%);
+    padding: 12px;
+}
+
+.ulEot{
+   
+    list-style: none;
+    margin-left: 10px;
+   
+}
+}
