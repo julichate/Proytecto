@@ -1,6 +1,5 @@
 # Proytecto
 
-Esta es la segunda pre entrega del proyecto final.
-Sigo con el programa del control de flota de un ferrocarril. En este caso comienza con una lista de 3 locomotoras usando como base de datos el local storage,
-a medida que se van agregando locomotoras y eot el programa convierte el valor del Array en JSON y cada vez que solicita ver la lista o hacer alguna acción,
-lo convierte en un array de objetos nuevamente.
+Esta es la entrega del desafío de operadores avanzados.
+Lo que hice en este caso fue optimizar el código del proyecto final con lo aprendido en clase para que quede todo un poco mas prolijo. Igualmente lo que fuí modificando lo comenté para que se vean las partes que fueron optimizadas.
+
