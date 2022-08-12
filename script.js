@@ -26,15 +26,9 @@ const resultadoLoc = 0
 
    function agregar() { // Funcion para agregar un nuevo objeto a la flota     
                              
-      let flota = [JSON.parse(localStorage.getItem(`flota`))]
-      
-      
-      
-      
-     
-      
-      
-                                        
+      //let flota = [JSON.parse(localStorage.getItem(`flota`))]      
+      let flota = JSON.parse(localStorage.getItem(`flota`)) || []         
+                                       
          let divLista = document.querySelector(".listaAgregar")          
           
        
@@ -46,32 +40,21 @@ const resultadoLoc = 0
          <input type="number" id ="inputEtiquetaEot">
          <button  class ="enviarButton">ENVIAR</button>
          </div>`
-        
-  
-
+         
          let inputEtiquetaLoc = document.querySelector(`#inputEtiquetaLoc`)
          let inputEtiquetaEot = document.querySelector(`#inputEtiquetaEot`)
          let enviarButton = document.querySelector(`.enviarButton`)
          
-       
+       enviarButton.onclick = () => {
 
-        enviarButton.onclick = () => {
-
-        
-           
-         
-         agregarLoc = inputEtiquetaLoc.value
-         
-          
-          
-          
-    
-          
-                                     
+          agregarLoc = inputEtiquetaLoc.value
+                                        
                    const resultadoLoc = flota.some((i) => i.locomotora == agregarLoc)
-                   const resultadoObj = flota.find((i) => i.locomotora == agregarLoc)                                  
+                   const resultadoObj = flota.find((i) => i.locomotora == agregarLoc)               
+                   
+                   resultadoLoc == true ? alert ("Loc: " + agregarLoc + " ya figura en la base de datos") : masEot() // Verifica si la Loc ingresada se encuentra en la base de datos
                                                                      
-                   if ( resultadoLoc == true) { // Verifica si la Loc ingresada se encuentra en la base de datos
+                  /* if ( resultadoLoc == true) { // Verifica si la Loc ingresada se encuentra en la base de datos
                      
                    alert ("Loc: " + agregarLoc + " ya figura en la base de datos")
                    
@@ -82,7 +65,7 @@ const resultadoLoc = 0
                    else if(resultadoLoc != true){
                    
                     masEot() // Llama a la funcion masEot   
-                  }     
+                  }  */   
                       
        } 
       }
@@ -90,29 +73,27 @@ const resultadoLoc = 0
 //---------------------------------------------------------Función masEot-------------------------------------------------------------
     
         function masEot(){
-
-
-
-
+         
             agregarEot = inputEtiquetaEot.value
             
             const resultado = flota.some((el) => el.eot == agregarEot)
+
+            // Verifica si el EOT ingresado ya existe en la base de datos
+            resultado == true ?  alert("EOT N°: " + agregarEot  + " ya está asignado") :  alert("Se dará de alta en el registro: Locomotora: " + agregarLoc + ";" + "Telémetro N°: " + agregarEot) 
             
-             if (resultado == true){ // Verifica si el EOT ingresado ya existe en la base de datos
+            flota.push({locomotora: agregarLoc, eot: agregarEot })
+            
+            /* if (resultado == true){ // Verifica si el EOT ingresado ya existe en la base de datos
            alert("EOT N°: " + agregarEot  + " ya está asignado")
            
            
           }
            else if(resultado != true){ // Si la Locomotora y el EOT no existen en la base de datos, agrega un nuevo objeto a la flota
             alert("Se dará de alta en el registro: Locomotora: " + agregarLoc + ";" + "Telémetro N°: " + agregarEot)
-            alert("Puede ver la lista completa en la consola")
+            
             flota.push({locomotora: agregarLoc, eot: agregarEot })
            console.log(flota)
-           }
-
-
-           
-
+           }*/         
 
            let jSon = JSON.stringify(flota)
            localStorage.setItem(`flota`, jSon)
@@ -126,7 +107,9 @@ const resultadoLoc = 0
         function modificar(){ //modifica un EOT a una locomotora existente
                                     
           
-         let flota = JSON.parse(localStorage.getItem(`flota`))
+         //let flota = JSON.parse(localStorage.getItem(`flota`))
+
+         let flota = JSON.parse(localStorage.getItem(`flota`)) || []
 
            let divLista = document.querySelector(".listaAgregar")          
           
@@ -174,9 +157,9 @@ const resultadoLoc = 0
                                                                      
                    if ( resultadoLoc != true) { // Verifica si la Loc ingresada se encuentra en la base de datos
                      
-                   alert ("Loc: " + agregarLoc + " NO figura en la base de datos\nPuede ver la lista en la consola")
+                   alert ("Loc: " + agregarLoc + " NO figura en la base de datos")
                    
-                   console.log(flota) // Muestra por consola el objeto completo donde se encuentra la Loc ingresada
+                   
                    }                 
                                
                                     
@@ -207,7 +190,9 @@ const resultadoLoc = 0
 
 
          function eliminar(){ // Elimina un objeto de la lista
-            let flota = JSON.parse(localStorage.getItem(`flota`))
+           // let flota = JSON.parse(localStorage.getItem(`flota`))
+           let flota = JSON.parse(localStorage.getItem(`flota`)) || []
+
             let divLista = document.querySelector(".listaAgregar")          
           
        
@@ -283,12 +268,11 @@ const resultadoLoc = 0
            
          esta()  
          
-      }
-         
-         
-        
+      }              
+     
         function esta (){
-         let flota = JSON.parse(localStorage.getItem(`flota`))
+         //let flota = JSON.parse(localStorage.getItem(`flota`))
+         let flota = JSON.parse(localStorage.getItem(`flota`)) || []
          divLista=document.querySelector(".listaAgregar")
          
         
@@ -301,8 +285,6 @@ const resultadoLoc = 0
                </div>
                
                `
-
-
          
          for (const flotas of flota) {
            
