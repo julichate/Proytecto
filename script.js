@@ -26,7 +26,7 @@ const resultadoLoc = 0
 
    function agregar() { // Funcion para agregar un nuevo objeto a la flota     
                              
-      //let flota = [JSON.parse(localStorage.getItem(`flota`))]      
+           
       let flota = JSON.parse(localStorage.getItem(`flota`)) || []         
                                        
          let divLista = document.querySelector(".listaAgregar")          
@@ -52,21 +52,9 @@ const resultadoLoc = 0
                    const resultadoLoc = flota.some((i) => i.locomotora == agregarLoc)
                    const resultadoObj = flota.find((i) => i.locomotora == agregarLoc)               
                    
-                   resultadoLoc == true ? alert ("Loc: " + agregarLoc + " ya figura en la base de datos") : masEot() // Verifica si la Loc ingresada se encuentra en la base de datos
+                   resultadoLoc == true ? sweetAlertErrorLoc() : masEot() // Verifica si la Loc ingresada se encuentra en la base de datos
                                                                      
-                  /* if ( resultadoLoc == true) { // Verifica si la Loc ingresada se encuentra en la base de datos
-                     
-                   alert ("Loc: " + agregarLoc + " ya figura en la base de datos")
-                   
-                   console.log(resultadoObj) // Muestra por consola el objeto completo donde se encuentra la Loc ingresada
-                   }                 
-                                 
-                                    
-                   else if(resultadoLoc != true){
-                   
-                    masEot() // Llama a la funcion masEot   
-                  }  */   
-                      
+                                   
        } 
       }
 
@@ -79,22 +67,9 @@ const resultadoLoc = 0
             const resultado = flota.some((el) => el.eot == agregarEot)
 
             // Verifica si el EOT ingresado ya existe en la base de datos
-            resultado == true ?  alert("EOT N°: " + agregarEot  + " ya está asignado") :  alert("Se dará de alta en el registro: Locomotora: " + agregarLoc + ";" + "Telémetro N°: " + agregarEot) 
-            
-            flota.push({locomotora: agregarLoc, eot: agregarEot })
-            
-            /* if (resultado == true){ // Verifica si el EOT ingresado ya existe en la base de datos
-           alert("EOT N°: " + agregarEot  + " ya está asignado")
+            resultado == true ?  sweetAlertErrorEot() :  sweetAlertAlta() + flota.push({locomotora: agregarLoc, eot: agregarEot })
            
-           
-          }
-           else if(resultado != true){ // Si la Locomotora y el EOT no existen en la base de datos, agrega un nuevo objeto a la flota
-            alert("Se dará de alta en el registro: Locomotora: " + agregarLoc + ";" + "Telémetro N°: " + agregarEot)
-            
-            flota.push({locomotora: agregarLoc, eot: agregarEot })
-           console.log(flota)
-           }*/         
-
+                       
            let jSon = JSON.stringify(flota)
            localStorage.setItem(`flota`, jSon)
 
@@ -107,7 +82,7 @@ const resultadoLoc = 0
         function modificar(){ //modifica un EOT a una locomotora existente
                                     
           
-         //let flota = JSON.parse(localStorage.getItem(`flota`))
+         
 
          let flota = JSON.parse(localStorage.getItem(`flota`)) || []
 
@@ -139,7 +114,12 @@ const resultadoLoc = 0
           
          if (resultadoEot == true){  // Verifica si el EOT ingresado ya está cargado
          
-            alert("Este EOT ya se encuentra cargado")
+            Swal.fire({
+               icon: 'error',
+               title: 'Oops...',
+               text: 'El EOT ingresado ya se encuentra en la base de datos',
+               
+             })
 
           const resultado = flota.find((i) => i.eot == busquedaEot) // Busca el elemento para mostrar a que locomotora está asignado el EOT ingresado
 
@@ -156,8 +136,13 @@ const resultadoLoc = 0
                    const resultadoObj = flota.find((i) => i.locomotora == agregarLoc)                                  
                                                                      
                    if ( resultadoLoc != true) { // Verifica si la Loc ingresada se encuentra en la base de datos
-                     
-                   alert ("Loc: " + agregarLoc + " NO figura en la base de datos")
+                     Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Loc: ' + agregarLoc + 'No figura en la base de datos',
+                        
+                      }) 
+                  
                    
                    
                    }                 
@@ -173,12 +158,21 @@ const resultadoLoc = 0
                break
             }
           }
-          alert("Se modificará la lista con los valores cargados \nPuede ver la lista modificada en la consola")
+
+          Swal.fire({
+            icon: 'info',
+            title: 'Atención',
+            text: 'Se modificará la lista con los valores cargados',
+            
+          }) 
+      
+
+          
           flota.splice(posicion, 1) // Elimina el objeteo de la posición obtenida anteriormente
           flota.push({locomotora: busquedaLoc, eot: busquedaEot }) //agrega el objeto ingresado por el usuario
           let jSon = JSON.stringify(flota)
            localStorage.setItem(`flota`, jSon)
-          //console.log(flota) // Muestra como queda la lista definitiva
+          
          }}
          let finAgregar = document.querySelector(".formAgregar") 
          finAgregar.remove()}
@@ -230,7 +224,7 @@ const resultadoLoc = 0
              }
              const resultado = flota.find((i) => i.locomotora == busquedaLoc) 
              
-             console.log(resultado ) // Muestra el objeto eliminado por consola
+             
 
              flota.splice(posicion, 1) // Elimina el objeteo de la posición obtenida anteriormente
              let jSon = JSON.stringify(flota)
@@ -238,17 +232,50 @@ const resultadoLoc = 0
              localStorage.setItem(`flota`, jSon)   
              let finAgregar = document.querySelector(".formAgregar") 
              finAgregar.remove()       
-             //console.log(flota) // Muestra como queda la lista definitiva
+             
             }
          else if(ubicacion != true){
-
-            console.log("La locomotora ingresada no está registrada en el sistema")
-            console.log(flota)
+            
+            Swal.fire({
+               icon: 'error',
+               title: 'Oops...',
+               text: 'La locomotora ingresada no está registrada en el sistema',
+               
+             })
+            
          }
          
       }
          }
-          
+
+
+         function sweetAlertErrorLoc(){
+
+            Swal.fire({
+               icon: 'error',
+               title: 'Oops...',
+               text: 'La locomotora ingresada ya se encuentra en la base de datos',
+               
+             })
+         }
+         
+         function sweetAlertErrorEot(){
+            Swal.fire({
+               icon: 'error',
+               title: 'Oops...',
+               text: 'EOT N°: ' + agregarEot  + ' ya está asignado',
+               
+             })
+         }
+
+         function sweetAlertAlta(){
+            Swal.fire({
+               icon: 'info',
+               title: 'Atención',
+               text: 'Se dará de alta en el registro: Locomotora: ' + agregarLoc + ';' + 'Telémetro N°: ' + agregarEot,
+               
+             })
+         }
     /*-----------------------------PROGRAMA PRINCIPAL---------------------------------------*/
    
    
@@ -271,7 +298,7 @@ const resultadoLoc = 0
       }              
      
         function esta (){
-         //let flota = JSON.parse(localStorage.getItem(`flota`))
+         
          let flota = JSON.parse(localStorage.getItem(`flota`)) || []
          divLista=document.querySelector(".listaAgregar")
          
