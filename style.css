@@ -133,6 +133,30 @@ margin-left: 10%;
     margin-left: 10px;
    
 }
+
+.toast{
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+   height: 100px;
+   width: 200px;
+   position: absolute;
+   border-radius: 10px;
+   background-color: rgb(42, 152, 241);
+   left: 25%;
+   animation: prueba 3s;
+   animation-fill-mode: forwards;
+   }
+
+   @keyframes prueba {
+    0% { margin-top: 0;
+           
+   }
+   100%{ margin-top: 150px;}
+
+}
 }
 
 @media screen and (min-width: 400px) {
@@ -164,7 +188,7 @@ margin-left: 10%;
     width: 150px;
    height: 20%;
    
-    font-size: 15px;
+    font-size: 20px;
     background-color: rgb(212, 237, 240);
     border-radius: 25px;
     color: black;
@@ -254,4 +278,26 @@ color: white;
     margin-left: 10px;
    
 }
+
+.toast{
+   color: white;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 100px;
+   width: 200px;
+   position: absolute;
+   border-radius: 10px;
+   background-color: rgb(42, 152, 241);
+   left: 45%;
+   animation: movimiento 3s;
+   animation-fill-mode: forwards;
+   
+}
+   @keyframes movimiento {
+    from{ transform: translateY(100vh); -webkit-transform: translateY(100vh); -moz-transform: translateY(100vh); -ms-transform: translateY(100vh); -o-transform: translateY(100vh); }
+    to{ transform: translateY(50vh) ; -webkit-transform: translateY(50vh) ; -moz-transform: translateY(50vh) ; -ms-transform: translateY(50vh) ; -o-transform: translateY(50vh) ;
+     }
+}
+ 
 }

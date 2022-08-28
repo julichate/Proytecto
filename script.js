@@ -1,5 +1,5 @@
 
-/*------------------------------ DECLARACION DE ARRAYS---------------------------------*/
+/*------------------------------ IMPORTACION DE FETCH ---------------------------------*/
 
 
 
@@ -72,7 +72,7 @@
       const resultado = flota.some((el) => el.eot == agregarEot)
       
       // Verifica si el EOT ingresado ya existe en la base de datos
-      resultado == true ?  sweetAlertErrorEot() :  sweetAlertAlta() + flota.push({locomotora: agregarLoc, eot: agregarEot })
+      resultado == true ?  sweetAlertErrorEot() :  sweetAlertAlta() + flota.push({locomotora: agregarLoc, eot: agregarEot }) + toastyAgregar()
       
       
       let jSon = JSON.stringify(flota)
@@ -174,6 +174,7 @@
                   
                   flota.splice(posicion, 1) // Elimina el objeteo de la posición obtenida anteriormente
                   flota.push({locomotora: busquedaLoc, eot: busquedaEot }) //agrega el objeto ingresado por el usuario
+                  toastyModificar()
                   let jSon = JSON.stringify(flota)
                   localStorage.setItem(`flotas`, jSon)
                   
@@ -231,6 +232,7 @@
                      
                      
                      flota.splice(posicion, 1) // Elimina el objeteo de la posición obtenida anteriormente
+                     toastyEliminar()
                      let jSon = JSON.stringify(flota)
                      
                      localStorage.setItem(`flotas`, jSon)   
@@ -251,57 +253,9 @@
                   
                }
             }
-            
-            
-            function sweetAlertErrorLoc(){
-               
-               Swal.fire({
-                  icon: 'error',
-                  title: 'Oops...',
-                  text: 'La locomotora ingresada ya se encuentra en la base de datos',
-                  
-               })
-            }
-            
-            function sweetAlertErrorEot(){
-               Swal.fire({
-                  icon: 'error',
-                  title: 'Oops...',
-                  text: 'EOT N°: ' + agregarEot  + ' ya está asignado',
-                  
-               })
-            }
-            
-            function sweetAlertAlta(){
-               Swal.fire({
-                  icon: 'info',
-                  title: 'Atención',
-                  text: 'Se dará de alta en el registro: Locomotora: ' + agregarLoc + ';' + 'Telémetro N°: ' + agregarEot,
-                  
-               })
-            }
-            /*-----------------------------PROGRAMA PRINCIPAL---------------------------------------*/
-            
-            
-            
-            let agregarB = document.querySelector(".botonAgregar")
-            let modificarB = document.querySelector(".botonModificar")
-            let eliminarB =  document.querySelector(".botonEliminar")
-            let verB =  document.querySelector(".botonVer")
-            
-            agregarB.onclick = () =>{agregar()}
-            modificarB.onclick = () =>{ modificar()}
-            eliminarB.onclick = () =>{ eliminar() }
-            
-            
-            verB.onclick = () => { 
-               
-               
-               esta()  
-               
-            }              
-            
-            function esta (){
+
+            //--------------------------------FUNCION CONTROL DE BOTONERA------------------------
+            function botonera (){
                
                let flota = JSON.parse(localStorage.getItem(`flotas`)) || []
                
@@ -344,6 +298,93 @@
                
                
             }
+            
+            //------------------------------FUNCIONES DE LIBRERIAS--------------------------
+            function sweetAlertErrorLoc(){
+               
+               Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'La locomotora ingresada ya se encuentra en la base de datos',
+                  
+               })
+            }
+            
+            function sweetAlertErrorEot(){
+               Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'EOT N°: ' + agregarEot  + ' ya está asignado',
+                  
+               })
+            }
+            
+            function sweetAlertAlta(){
+               Swal.fire({
+                  icon: 'info',
+                  title: 'Atención',
+                  text: 'Se dará de alta en el registro: Locomotora: ' + agregarLoc + ';' + 'Telémetro N°: ' + agregarEot,
+                  
+               })
+            }
+
+            function toastyAgregar() {
+
+               Toastify({
+                  text: "Los datos se agregaron correctamente a la base de datos",
+                  duration: 3000,
+                  
+                  className: `toast`
+          
+              }).showToast();
+            }
+
+            
+              function toastyModificar() {
+
+               Toastify({
+                  text: "Los datos se modificaron correctamente a la base de datos",
+                  duration: 3000,
+                  
+                  className: `toast`
+          
+              }).showToast();
+           
+            }
+
+            function toastyEliminar() {
+
+               Toastify({
+                  text: "Los datos se eliminaron correctamente de la base de datos",
+                  duration: 3000,
+                  
+                  className: `toast`
+          
+              }).showToast();
+            }
+
+
+            /*-----------------------------PROGRAMA PRINCIPAL---------------------------------------*/
+            
+            
+            
+            let agregarB = document.querySelector(".botonAgregar")
+            let modificarB = document.querySelector(".botonModificar")
+            let eliminarB =  document.querySelector(".botonEliminar")
+            let verB =  document.querySelector(".botonVer")
+            
+            agregarB.onclick = () =>{agregar()}
+            modificarB.onclick = () =>{ modificar()}
+            eliminarB.onclick = () =>{ eliminar() }
+            
+            
+            verB.onclick = () => { 
+               
+               
+              botonera()  
+               
+            }              
+            
             
             
             
